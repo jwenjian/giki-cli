@@ -40,7 +40,7 @@ USAGE
   $ giki explore
 
 OPTIONS
-  -h, --help       show CLI help
+  -h, --help           show CLI help
   -n, --number=number  number of talks to explore, [1-20], default 5
 ```
 
