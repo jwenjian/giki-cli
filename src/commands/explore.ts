@@ -19,8 +19,12 @@ export default class Explore extends Command {
     let n = 5
     if (flags.number) {
       let input_n = Number.parseInt(flags.number)
-      if (input_n > 20 ) {
+      if (input_n >=1 && input_n <= 20) {
+        n = input_n
+      } else if (input_n > 20) {
         n = 20
+      } else {
+        n = 5
       }
     }
 
