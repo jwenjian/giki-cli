@@ -19,7 +19,7 @@ $ npm install -g giki-cli
 $ giki COMMAND
 running command...
 $ giki (-v|--version|version)
-giki-cli/0.2.1 darwin-x64 node-v12.15.0
+giki-cli/0.2.2 darwin-x64 node-v12.15.0
 $ giki --help [COMMAND]
 USAGE
   $ giki COMMAND
@@ -45,7 +45,7 @@ OPTIONS
   -n, --number=number  number of talks to explore, [1-20], default 5
 ```
 
-_See code: [src/commands/explore.ts](https://github.com/jwenjian/giki-cli/blob/v0.2.1/src/commands/explore.ts)_
+_See code: [src/commands/explore.ts](https://github.com/jwenjian/giki-cli/blob/v0.2.2/src/commands/explore.ts)_
 
 ## `giki help [COMMAND]`
 
@@ -81,5 +81,5 @@ OPTIONS
   -t, --tag=tag         tag of the new giki
 ```
 
-_See code: [src/commands/new.ts](https://github.com/jwenjian/giki-cli/blob/v0.2.1/src/commands/new.ts)_
+_See code: [src/commands/new.ts](https://github.com/jwenjian/giki-cli/blob/v0.2.2/src/commands/new.ts)_
 <!-- commandsstop -->
