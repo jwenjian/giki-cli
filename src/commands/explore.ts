@@ -39,7 +39,12 @@ export default class Explore extends Command {
     // sort by id desc
     let origData = resp.data.data
     origData.slice(0, n).reverse().forEach((talk: any) => {
-      this.log(`${chalk.blue(talk.name)}\t${chalk.redBright(talk.created_at)}:`)
+      // likes
+      let likes_str = ''
+      if (talk.likes && talk.likes > 0) {
+        likes_str = chalk.redBright(`\t♥ ${talk.likes}`)
+      }
+      this.log(`${chalk.blue(talk.name)}\t${chalk.grey(talk.created_at)}${likes_str}:`)
       if (talk.tags && talk.tags.length > 0) {
         const tag_str = talk.tags.map((t: any) => '#' + t + '#').reduce((a: any, b: any) => a + ', ' + b)
         this.log(`${chalk.yellow(tag_str)}`)
