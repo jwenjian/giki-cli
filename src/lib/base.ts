@@ -1,10 +1,9 @@
-import Command, {flags} from '@oclif/command'
+import Command from '@oclif/command'
 import * as fs from 'fs'
 import {join} from 'path'
 import * as axios from 'axios'
-import { cli } from 'cli-ux'
-const chalk = require('chalk');
-
+import {cli} from 'cli-ux'
+const chalk = require('chalk')
 
 export default abstract class extends Command {
   async initConfig() {
@@ -17,11 +16,11 @@ export default abstract class extends Command {
     const token = await cli.prompt('paste your token here')
     this.log(chalk.yellow('got it, your token will only appears in local config file, relax.'))
     const userConfig = {
-      token: token
+      token: token,
     }
     cli.action.start(`creating config.json in ${this.config.configDir}`)
     fs.mkdirSync(this.config.configDir, {
-      recursive: true
+      recursive: true,
     })
     fs.writeFileSync(join(this.config.configDir, 'config.json'), JSON.stringify(userConfig))
     cli.action.stop()
@@ -40,17 +39,16 @@ export default abstract class extends Command {
       this.log(chalk.yellow('please delete above file and run again'))
       return
     }
+    // eslint-disable-next-line no-unused-vars
     const client = axios.default.create({
       baseURL: 'https://giki.app/api',
       headers: {
-        'authorization': 'Basic ' + userConfig.token,
-        'content-type': 'application/json'
-      }
+        authorization: 'Basic ' + userConfig.token,
+        'content-type': 'application/json',
+      },
     })
     await this.doCommand(userConfig, client)
   }
 
-  async doCommand(_userConfig: Object, client: axios.AxiosInstance) {
-    
-  }
+  abstract async doCommand(_userConfig: Record<string, any>, client: axios.AxiosInstance): Promise<any>
 }
