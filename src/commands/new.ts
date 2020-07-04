@@ -9,19 +9,14 @@ export default class New extends Command {
 
   static flags = {
     help: flags.help({ char: 'h' }),
-    // flag with a value (-n, --name=VALUE)
     tag: flags.string({ char: 't', description: 'tag of the new giki' }),
-    action: flags.string({ char: 'a', description: 'action of the new giki' }),
+    action: flags.string({ char: 'a', description: 'action of the new giki', options: ['weibo', 'i'] }),
   }
 
-  static args = [{ name: 'text' }]
+  static args = [{ name: 'text', required: true, description: 'text to giki' }]
 
   async doCommand(userConfig: Object, client: AxiosInstance) {
     const { args, flags } = this.parse(New)
-    if (!args.text) {
-      this.warn(new Error('Text cannot be empty!'))
-      return
-    }
     let actions = []
     if (flags.action) {
       actions.push(flags.action)
