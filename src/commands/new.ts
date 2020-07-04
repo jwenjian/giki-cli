@@ -9,7 +9,7 @@ export default class New extends Command {
 
   static flags = {
     help: flags.help({ char: 'h' }),
-    tag: flags.string({ char: 't', description: 'tag of the new giki' }),
+    tag: flags.string({ char: 't', description: 'tag of the new giki', multiple: true }),
     action: flags.string({ char: 'a', description: 'action of the new giki', options: ['weibo', 'i'] }),
   }
 
@@ -21,9 +21,9 @@ export default class New extends Command {
     if (flags.action) {
       actions.push(flags.action)
     }
-    let tags = []
-    if (flags.tag) {
-      tags.push(flags.tag)
+    let tags: string[]  = []
+    if (flags.tag && flags.tag.length > 0) {
+      tags =  flags.tag
     }
     cli.action.start(`creating new giki`)
     const resp = await client.post('talks/create', {
