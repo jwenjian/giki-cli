@@ -30,6 +30,7 @@ USAGE
 <!-- commands -->
 * [`giki explore`](#giki-explore)
 * [`giki help [COMMAND]`](#giki-help-command)
+* [`giki new [FILE]`](#giki-new-file)
 
 ## `giki explore`
 
@@ -62,4 +63,20 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0/src/commands/help.ts)_
+
+## `giki new [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ giki new [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/new.ts](https://github.com/jwenjian/giki-cli/blob/v0.1.0/src/commands/new.ts)_
 <!-- commandsstop -->
