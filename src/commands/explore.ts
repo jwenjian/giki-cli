@@ -10,7 +10,7 @@ export default class Explore extends Command {
   static flags = {
     help: flags.help({char: 'h'}),
     // flag with a value (-n, --number=VALUE)
-    number: flags.string({ char: 'n', description: 'number of talks to explore, [1-20], default 5' })
+    number: flags.integer({ char: 'n', description: 'number of talks to explore, [1-20], default 5' })
   }
 
   async doCommand(userConfig: { token: any; }, client: AxiosInstance) {
@@ -18,7 +18,7 @@ export default class Explore extends Command {
 
     let n = 5
     if (flags.number) {
-      let input_n = Number.parseInt(flags.number)
+      let input_n = flags.number
       if (input_n >=1 && input_n <= 20) {
         n = input_n
       } else if (input_n > 20) {
