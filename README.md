@@ -19,7 +19,7 @@ $ npm install -g giki-cli
 $ giki COMMAND
 running command...
 $ giki (-v|--version|version)
-giki-cli/0.1.0 darwin-x64 node-v12.15.0
+giki-cli/0.2.0 darwin-x64 node-v12.15.0
 $ giki --help [COMMAND]
 USAGE
   $ giki COMMAND
@@ -30,7 +30,7 @@ USAGE
 <!-- commands -->
 * [`giki explore`](#giki-explore)
 * [`giki help [COMMAND]`](#giki-help-command)
-* [`giki new [FILE]`](#giki-new-file)
+* [`giki new TEXT`](#giki-new-text)
 
 ## `giki explore`
 
@@ -45,7 +45,7 @@ OPTIONS
   -n, --number=number  number of talks to explore, [1-20], default 5
 ```
 
-_See code: [src/commands/explore.ts](https://github.com/jwenjian/giki-cli/blob/v0.1.0/src/commands/explore.ts)_
+_See code: [src/commands/explore.ts](https://github.com/jwenjian/giki-cli/blob/v0.2.0/src/commands/explore.ts)_
 
 ## `giki help [COMMAND]`
 
@@ -64,19 +64,22 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0/src/commands/help.ts)_
 
-## `giki new [FILE]`
+## `giki new TEXT`
 
-describe the command here
+post a new giki under your account
 
 ```
 USAGE
-  $ giki new [FILE]
+  $ giki new TEXT
+
+ARGUMENTS
+  TEXT  text to giki
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -a, --action=weibo|i  action of the new giki
+  -h, --help            show CLI help
+  -t, --tag=tag         tag of the new giki
 ```
 
-_See code: [src/commands/new.ts](https://github.com/jwenjian/giki-cli/blob/v0.1.0/src/commands/new.ts)_
+_See code: [src/commands/new.ts](https://github.com/jwenjian/giki-cli/blob/v0.2.0/src/commands/new.ts)_
 <!-- commandsstop -->
