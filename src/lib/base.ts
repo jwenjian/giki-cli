@@ -20,7 +20,9 @@ export default abstract class extends Command {
       token: token
     }
     cli.action.start(`creating config.json in ${this.config.configDir}`)
-    fs.mkdirSync(this.config.configDir)
+    fs.mkdirSync(this.config.configDir, {
+      recursive: true
+    })
     fs.writeFileSync(join(this.config.configDir, 'config.json'), JSON.stringify(userConfig))
     cli.action.stop()
     this.log(chalk.green('config done, enjoy!'))
