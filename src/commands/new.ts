@@ -5,7 +5,7 @@ const chalk = require('chalk');
 import cli from 'cli-ux'
 
 export default class New extends Command {
-  static description = 'create and post a new giki to your account'
+  static description = 'post a new giki under your account'
 
   static flags = {
     help: flags.help({ char: 'h' }),
