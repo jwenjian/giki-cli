@@ -19,7 +19,7 @@ $ npm install -g giki-cli
 $ giki COMMAND
 running command...
 $ giki (-v|--version|version)
-giki-cli/0.2.3 darwin-x64 node-v12.15.0
+giki-cli/0.2.4 darwin-x64 node-v12.15.0
 $ giki --help [COMMAND]
 USAGE
   $ giki COMMAND
@@ -28,9 +28,33 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`giki autocomplete [SHELL]`](#giki-autocomplete-shell)
 * [`giki explore`](#giki-explore)
 * [`giki help [COMMAND]`](#giki-help-command)
 * [`giki new TEXT`](#giki-new-text)
+
+## `giki autocomplete [SHELL]`
+
+display autocomplete installation instructions
+
+```
+USAGE
+  $ giki autocomplete [SHELL]
+
+ARGUMENTS
+  SHELL  shell type
+
+OPTIONS
+  -r, --refresh-cache  Refresh cache (ignores displaying instructions)
+
+EXAMPLES
+  $ giki autocomplete
+  $ giki autocomplete bash
+  $ giki autocomplete zsh
+  $ giki autocomplete --refresh-cache
+```
+
+_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v0.2.0/src/commands/autocomplete/index.ts)_
 
 ## `giki explore`
 
@@ -45,7 +69,7 @@ OPTIONS
   -n, --number=number  number of talks to explore, [1-20], default 5
 ```
 
-_See code: [src/commands/explore.ts](https://github.com/jwenjian/giki-cli/blob/v0.2.3/src/commands/explore.ts)_
+_See code: [src/commands/explore.ts](https://github.com/jwenjian/giki-cli/blob/v0.2.4/src/commands/explore.ts)_
 
 ## `giki help [COMMAND]`
 
@@ -81,5 +105,5 @@ OPTIONS
   -t, --tag=tag         tag of the new giki
 ```
 
-_See code: [src/commands/new.ts](https://github.com/jwenjian/giki-cli/blob/v0.2.3/src/commands/new.ts)_
+_See code: [src/commands/new.ts](https://github.com/jwenjian/giki-cli/blob/v0.2.4/src/commands/new.ts)_
 <!-- commandsstop -->
