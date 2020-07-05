@@ -3,6 +3,12 @@ giki-cli
 
 A CLI app for giki.app
 
+⚠️ If you want to upload image to your new giki talk, you MUST install picgo globally(`npm install picgo -g`) first, see this [picgo bug](https://github.com/PicGo/PicGo-Core/issues/46).
+
+Also I highly recommend you to test picgo by execute `picgo upload <image_file>` before using `-i` flag in `giki new` command
+
+---
+
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/giki-cli.svg)](https://npmjs.org/package/giki-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/giki-cli.svg)](https://npmjs.org/package/giki-cli)
