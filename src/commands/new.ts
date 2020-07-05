@@ -50,7 +50,7 @@ export default class New extends Command {
         this.log(chalk.red('failed to upload image, please check your picgo config'))
         return
       }
-      text = `${text}\n![](${image_url})\n`
+      text = `${text}\n\n![](${image_url})\n`
     }
 
     cli.action.start('creating new giki')
