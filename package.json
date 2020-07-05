@@ -1,7 +1,7 @@
 {
   "name": "giki-cli",
   "description": "A CLI app for giki.app",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "author": "Jiang Wenjian @jwenjian",
   "bin": {
     "giki": "./bin/run"
