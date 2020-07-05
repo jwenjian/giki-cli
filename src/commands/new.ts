@@ -11,9 +11,9 @@ export default class New extends Command {
 
   static flags = {
     help: flags.help({char: 'h'}),
-    tag: flags.string({char: 't', description: 'tag of the new giki', multiple: true}),
+    tag: flags.string({char: 't', description: 'tag[s] of the new giki, you can set more than 1 tags but you must put the -t flag after the text argument, like: `giki new "text to talk" -t <tag1> -t <tag2>`', multiple: true}),
     action: flags.string({char: 'a', description: 'action of the new giki', options: ['weibo', 'i']}),
-    image: flags.string({char: 'i', description: 'image file path to upload'})
+    image: flags.string({char: 'i', description: 'image file path to upload, note that image uploading is powered by https://github.com/PicGo/PicGo-Core, please make sure you have the correct configuration.'})
   }
 
   static args = [{name: 'text', required: true, description: 'text to giki'}]
