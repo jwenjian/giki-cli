@@ -13,20 +13,22 @@ export default class New extends Command {
     help: flags.help({char: 'h'}),
     tag: flags.string({char: 't', description: 'tag[s] of the new giki, you can set more than 1 tags but you must put the -t flag after the text argument, like: `giki new "text to talk" -t <tag1> -t <tag2>`', multiple: true}),
     action: flags.string({char: 'a', description: 'action of the new giki', options: ['weibo', 'i']}),
-    image: flags.string({char: 'i', description: 'image file path to upload, note that image uploading is powered by https://github.com/PicGo/PicGo-Core, please make sure you have the correct configuration.'})
+    image: flags.string({char: 'i', description: 'image file path to upload, note that image uploading is powered by https://github.com/PicGo/PicGo-Core, please make sure you have the correct configuration.'}),
   }
 
   static args = [{name: 'text', required: true, description: 'text to giki'}]
 
-  async uploadImage(imagePath:string) {
+  async uploadImage(imagePath: string) {
     return new Promise((resolve, reject) => {
-      picgo.on('finished', (ctx:any) => resolve(ctx.output))
-      picgo.on('error', (err:any) => {
+      picgo.on('finished', (ctx: any) => resolve(ctx.output))
+      picgo.on('error', (err: any) => {
         this.log(chalk.red('failed to upload image'))
+        reject(err)
       })
       picgo.upload([imagePath])
     })
   }
+
   async doCommand(userConfig: Record<string, any>, client: AxiosInstance) {
     const {args, flags} = this.parse(New)
     const actions = []
@@ -40,7 +42,7 @@ export default class New extends Command {
     let text = args.text
     let image_url = ''
     if (flags.image) {
-      const img_resp:any = await this.uploadImage(flags.image)
+      const img_resp: any = await this.uploadImage(flags.image)
       // only get first image url
       image_url =  img_resp[0].imgUrl
       // upload image must success to continue
@@ -50,7 +52,7 @@ export default class New extends Command {
       }
       text = `${text}\n![](${image_url})\n`
     }
-    
+
     cli.action.start('creating new giki')
     await client.post('talks/create', {
       text: text,
