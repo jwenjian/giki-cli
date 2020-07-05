@@ -31,6 +31,7 @@ USAGE
 * [`giki autocomplete [SHELL]`](#giki-autocomplete-shell)
 * [`giki explore`](#giki-explore)
 * [`giki help [COMMAND]`](#giki-help-command)
+* [`giki list [FILE]`](#giki-list-file)
 * [`giki new TEXT`](#giki-new-text)
 
 ## `giki autocomplete [SHELL]`
@@ -87,6 +88,22 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0/src/commands/help.ts)_
+
+## `giki list [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ giki list [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/list.ts](https://github.com/jwenjian/giki-cli/blob/v0.2.5/src/commands/list.ts)_
 
 ## `giki new TEXT`
 
