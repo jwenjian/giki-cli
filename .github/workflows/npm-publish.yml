@@ -28,7 +28,7 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
 
-      - run: mkdir -p ~/.picgo && echo "{}" > ~/.picgo/config.json # fix picgo this.db.set().write().catch is not a function bug
+      - run: mkdir -p ~/.picgo && echo '{"picBed":{"uploader":"smms","current":"smms","smms":{"token":""}},"picgoPlugins":{}}' > ~/.picgo/config.json # fix picgo this.db.set().write().catch is not a function bug
       - run: npm ci
       - run: npm publish
         env:
