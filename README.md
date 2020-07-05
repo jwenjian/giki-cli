@@ -19,7 +19,7 @@ $ npm install -g giki-cli
 $ giki COMMAND
 running command...
 $ giki (-v|--version|version)
-giki-cli/0.3.0 darwin-x64 node-v12.15.0
+giki-cli/0.4.0 darwin-x64 node-v12.15.0
 $ giki --help [COMMAND]
 USAGE
   $ giki COMMAND
@@ -70,7 +70,7 @@ OPTIONS
   -n, --number=number  number of talks to explore, [1-20], default 5
 ```
 
-_See code: [src/commands/explore.ts](https://github.com/jwenjian/giki-cli/blob/v0.3.0/src/commands/explore.ts)_
+_See code: [src/commands/explore.ts](https://github.com/jwenjian/giki-cli/blob/v0.4.0/src/commands/explore.ts)_
 
 ## `giki help [COMMAND]`
 
@@ -102,7 +102,7 @@ OPTIONS
   -n, --number=number  number of talks to list, [1-20], default 5
 ```
 
-_See code: [src/commands/list.ts](https://github.com/jwenjian/giki-cli/blob/v0.3.0/src/commands/list.ts)_
+_See code: [src/commands/list.ts](https://github.com/jwenjian/giki-cli/blob/v0.4.0/src/commands/list.ts)_
 
 ## `giki new TEXT`
 
@@ -118,8 +118,13 @@ ARGUMENTS
 OPTIONS
   -a, --action=weibo|i  action of the new giki
   -h, --help            show CLI help
-  -t, --tag=tag         tag of the new giki
+
+  -i, --image=image     image file path to upload, note that image uploading is powered by
+                        https://github.com/PicGo/PicGo-Core, please make sure you have the correct configuration.
+
+  -t, --tag=tag         tag[s] of the new giki, you can set more than 1 tags but you must put the -t flag after the text
+                        argument, like: `giki new "text to talk" -t <tag1> -t <tag2>`
 ```
 
-_See code: [src/commands/new.ts](https://github.com/jwenjian/giki-cli/blob/v0.3.0/src/commands/new.ts)_
+_See code: [src/commands/new.ts](https://github.com/jwenjian/giki-cli/blob/v0.4.0/src/commands/new.ts)_
 <!-- commandsstop -->
