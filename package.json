@@ -15,6 +15,7 @@
     "axios": "^0.19.2",
     "chalk": "^4.1.0",
     "cli-ux": "^5.4.9",
+    "picgo": "^1.4.10",
     "tslib": "^1.13.0"
   },
   "devDependencies": {

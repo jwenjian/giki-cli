@@ -3,6 +3,8 @@ import {flags} from '@oclif/command'
 import {AxiosInstance} from 'axios'
 const chalk = require('chalk')
 import cli from 'cli-ux'
+const PicGo = require('picgo')
+const picgo = new PicGo()
 
 export default class New extends Command {
   static description = 'post a new giki under your account'
@@ -11,10 +13,20 @@ export default class New extends Command {
     help: flags.help({char: 'h'}),
     tag: flags.string({char: 't', description: 'tag of the new giki', multiple: true}),
     action: flags.string({char: 'a', description: 'action of the new giki', options: ['weibo', 'i']}),
+    image: flags.string({char: 'i', description: 'image file path to upload'})
   }
 
   static args = [{name: 'text', required: true, description: 'text to giki'}]
 
+  async uploadImage(imagePath:string) {
+    return new Promise((resolve, reject) => {
+      picgo.on('finished', (ctx:any) => resolve(ctx.output))
+      picgo.on('error', (err:any) => {
+        this.log(chalk.red('failed to upload image'))
+      })
+      picgo.upload([imagePath])
+    })
+  }
   async doCommand(userConfig: Record<string, any>, client: AxiosInstance) {
     const {args, flags} = this.parse(New)
     const actions = []
@@ -25,9 +37,23 @@ export default class New extends Command {
     if (flags.tag && flags.tag.length > 0) {
       tags =  flags.tag
     }
+    let text = args.text
+    let image_url = ''
+    if (flags.image) {
+      const img_resp:any = await this.uploadImage(flags.image)
+      // only get first image url
+      image_url =  img_resp[0].imgUrl
+      // upload image must success to continue
+      if (!image_url) {
+        this.log(chalk.red('failed to upload image, please check your picgo config'))
+        return
+      }
+      text = `${text}\n![](${image_url})\n`
+    }
+    
     cli.action.start('creating new giki')
     await client.post('talks/create', {
-      text: args.text,
+      text: text,
       tags: tags,
       actions: actions,
     })
