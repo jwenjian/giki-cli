@@ -4,6 +4,7 @@ import {join} from 'path'
 import * as axios from 'axios'
 import {cli} from 'cli-ux'
 const chalk = require('chalk')
+const clear = require('clear')
 
 export default abstract class extends Command {
   async initConfig() {
@@ -47,6 +48,8 @@ export default abstract class extends Command {
         'content-type': 'application/json',
       },
     })
+    // clear current screen to only show next command output
+    clear()
     await this.doCommand(userConfig, client)
   }
 
